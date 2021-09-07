@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Shops list' %}{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Shops list' %}</h1>
+{% if object_list %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">{% trans 'Title' %}</th>
+        <th scope="col">{% trans 'Address' %}</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for shop in object_list %}
+    <tr class="{% if contractor.to_delete %} text-white bg-secondary {% endif %}">
+        <td>
+            {{ shop.title }}
+        </td>
+        <td>
+            {{ shop.address }}
+        </td>
+        <td>
+            <a class="btn btn-outline-dark"
+               href="">{% trans 'open' %}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>{% trans 'There is no shops' %}</p>
+{% endif %}
+{% endblock %}

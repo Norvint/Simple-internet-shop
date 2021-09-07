@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{ object.code }}{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Item' %}</h1>
+<div class="card col-3 me-5 mb-3 mt-2">
+    <img class="card-img-top" style="height: 250px" src="/media/{{ item.files.image.name }}"
+         alt="{% trans 'Item image' %}">
+    <div class="card-body">
+        <h5 class="card-title">{{ object.code }}</h5>
+        <p class="card-text">{{ object.description }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{% trans 'Price' %}: {{ object.price }}</li>
+    </ul>
+</div>
+
+<h3>{% trans 'Availability' %}</h3>
+{% if available_items %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">{% trans 'Shop' %}</th>
+        <th scope="col">{% trans 'Quantity' %}</th>
+        <th scope="col">{% trans 'Buy' %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for available in available_items %}
+    <tr class="{% if contractor.to_delete %} text-white bg-secondary {% endif %}">
+        <td>
+            {{ available.shop.title }}
+        </td>
+        <td>
+            {{ available.quantity }}
+        </td>
+        <td>
+            <form action="{% url 'buy_item' object.pk available.shop.pk %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-outline-success" type="submit" name="buy" value="+" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>{% trans 'There is no shops' %}</p>
+{% endif %}
+
+{% if cart_items %}
+<h3>{% trans 'In cart' %}</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">{% trans 'Shop' %}</th>
+        <th scope="col">{% trans 'Quantity' %}</th>
+        <th scope="col">{% trans 'Dismiss' %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for cart_item in cart_items %}
+    <tr class="">
+        <td>
+            {{ cart_item.shop.title }}
+        </td>
+        <td>
+            {{ cart_item.quantity }}
+        </td>
+        <td>
+            <form action="{% url 'dismiss_item' object.pk cart_item.shop.pk %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-outline-danger" type="submit" name="dismiss" value="-" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Items list' %}{% endblock %}
+
+
+{% block content %}
+<h1>{% trans 'Items list' %}</h1>
+{% if items_list %}
+<div class="d-flex justify-content-between mt-2">
+    {% for item in items_list %}
+
+    <div class="card col-3 me-5">
+      <img class="card-img-top" style="height: 250px" src="/media/{{ item.files.image.name }}" alt="{% trans 'Item image' %}">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.code }}</h5>
+        <p class="card-text">{{ item.description }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{% trans 'price' %}: {{ item.price }}</li>
+      </ul>
+      <div class="card-body">
+          <a href="{% url 'item_detail' item.pk %}" class="card-link">{% trans 'open' %}</a>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p>Товаров нет.</p>
+{% endif %}
+{% endblock %}

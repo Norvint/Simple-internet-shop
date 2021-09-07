@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Update items prices' %}{% endblock %}
+
+{% block content %}
+<h2>{% trans 'Update items prices' %}</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">{% trans 'Load prices' %}</button>
+</form>
+{% endblock %}

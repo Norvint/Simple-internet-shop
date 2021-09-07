@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Проверить размер файла{% endblock %}
+
+{% block content %}
+<h2>Узнать размер файла</h2>
+<form method="post" enctype="multipart/form-data" name="file-size">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Узнать размер</button>
+</form>
+
+{% if answer %}
+<p>
+    {{ answer }}
+</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Order' %} #{{ object.pk }}{% endblock %}
+
+{% block content %}
+
+<h1>{% trans 'Order' %} #{{ object.pk }}</h1>
+
+<div class="card col-5 me-4 mb-3 mt-2">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{% trans 'Created' %}: {{ object.created }}</li>
+        <li class="list-group-item">{% trans 'Total sum' %}: {{ object.total_sum }}</li>
+    </ul>
+    <div class="card-body">
+        <h3>{% trans 'Items in order' %}</h3>
+    </div>
+    {% if order.items_in_order.all %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">{% trans 'Item' %}</th>
+            <th scope="col">{% trans 'Shop' %}</th>
+            <th scope="col">{% trans 'Quantity' %}</th>
+            <th scope="col">{% trans 'Price' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order_item in order.items_in_order.all %}
+        <tr class="{% if contractor.to_delete %} text-white bg-secondary {% endif %}">
+            <td>
+                {{ order_item.item }}
+            </td>
+            <td>
+                {{ order_item.shop.title }}
+            </td>
+
+            <td>
+                {{ order_item.quantity }}
+            </td>
+            <td>
+                {{ order_item.item.price }}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+{% endblock %}

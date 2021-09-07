@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Bought items report' %}{% endblock %}
+
+{% block content %}
+
+<form name="bought-items-filter" method="post">
+    {% csrf_token %}
+    {{ filter_form.first_date.label }}
+    {{ filter_form.first_date }}
+    {{ filter_form.second_date.label }}
+    {{ filter_form.second_date }}
+    <button type="submit">Отсортировать</button>
+</form>
+
+<h1>{% trans 'Bought items' %}</h1>
+{% if bought_items %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">{% trans 'Code' %}</th>
+        <th scope="col">{% trans 'Title' %}</th>
+        <th scope="col">{% trans 'Quantity' %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for bought_item in bought_items %}
+    <tr class="{% if contractor.to_delete %} text-white bg-secondary {% endif %}">
+        <td>
+            {{ bought_item.code }}
+        </td>
+        <td>
+            {{ bought_item.description }}
+        </td>
+        <td>
+            {{ bought_item.bought }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>{% trans 'There is no bought items' %}</p>
+{% endif %}
+{% endblock %}

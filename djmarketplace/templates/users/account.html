@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load cache %}
+{% block title %} Профиль {% endblock %}
+
+{% block content %}
+<h1>{% trans 'User profile' %}</h1>
+{% if request.user.is_authenticated %}
+<div class="card col-12">
+    <div class="card-body">
+        <h3>{{ request.user.username }}</h3>
+    </div>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">
+            <a href="{% url 'account_update' %}" class="btn btn-outline-dark">{% trans 'Edit' %}</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="{% url 'add_balance' %}" class="btn btn-outline-dark">{% trans 'Add balance' %}</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="{% url 'restore_password' %}" class="btn btn-outline-dark">{% trans 'Restore password' %}</a>
+        </li>
+    </ul>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">{% trans 'Cart' %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="more-tab" data-bs-toggle="tab" data-bs-target="#more" type="button"
+                    role="tab" aria-controls="more" aria-selected="false">{% trans 'Orders' %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                    role="tab" aria-controls="home" aria-selected="true">{% trans 'Information' %}
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="card-body">
+                {% if request.user.cart.items_in_cart.all %}
+                    <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">{% trans 'Item' %}</th>
+                        <th scope="col">{% trans 'Shop' %}</th>
+                        <th scope="col">{% trans 'Price' %}</th>
+                        <th scope="col">{% trans 'Quantity' %}</th>
+                        <th scope="col">{% trans 'Add' %}</th>
+                        <th scope="col">{% trans 'Dismiss' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cart_item in request.user.cart.items_in_cart.all %}
+                    <tr class="">
+                        <td>
+                            {{ cart_item.item }}
+                        </td>
+                        <td>
+                            {{ cart_item.shop }}
+                        </td>
+                        <td>
+                            {{ cart_item.item.price }}
+                        </td>
+                        <td>
+                            {{ cart_item.quantity }}
+                        </td>
+                        <td>
+                            <form action="{% url 'buy_item_from_cart' cart_item.item.pk cart_item.shop.pk %}" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-outline-success" type="submit" name="buy" value="+">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{% url 'dismiss_item_from_cart' cart_item.item.pk cart_item.shop.pk %}" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-outline-danger" type="submit" name="dismiss" value="-">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="card-body">
+                    <h3>{% trans 'Overall' %} {{ request.user.cart.items_in_cart.count }} {% trans 'positions will cost' %}:
+                        {{ request.user.cart.total_sum }} {% trans 'imagine coins' %}</h3>
+                    <form action="{% url 'create_order' %}" method="post">
+                        {% csrf_token %}
+                        <input class="btn btn-outline-dark" type="submit" name="checkout" value="{% trans 'Checkout' %}">
+                    </form>
+                </div>
+                {% else %}
+                    <p>{% trans 'There is no items in cart' %}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="more" role="tabpanel" aria-labelledby="more-tab">
+            <div class="card-body">
+                {% if orders %}
+                    <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">{% trans 'Number' %}</th>
+                        <th scope="col">{% trans 'Created' %}</th>
+                        <th scope="col">{% trans 'Items' %}</th>
+                        <th scope="col">{% trans 'Total sum' %}</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% cache 500 orders request.user.username %}
+                    {% for order in orders %}
+                    <tr class="">
+                        <td>
+                            {{ order.pk }}
+                        </td>
+                        <td>
+                            {{ order.created }}
+                        </td>
+                        <td>
+                            {{ order.items }}
+                        </td>
+                        <td>
+                            {{ order.total_sum }}
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-success"
+                               href="{% url 'order_detail' order.pk %}">{% trans 'Open' %}</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endcache %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p>{% trans 'There is no orders yet' %}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">E-mail: {{ request.user.email }}</li>
+                <li class="list-group-item">{% trans 'Phone number' %}: {{ request.user.profile.phone_number }}</li>
+                <li class="list-group-item">{% trans 'First name' %}: {{ request.user.first_name }}</li>
+                <li class="list-group-item">{% trans 'Last name' %}: {{ request.user.last_name }}</li>
+                <li class="list-group-item">{% trans 'City' %}: {{ request.user.profile.city }}</li>
+                 <li class="list-group-item">{% trans 'Status' %}: {{ request.user.profile.status }}</li>
+                <li class="list-group-item">{% trans 'Balance' %}: {{ request.user.profile.balance }}</li>
+                <li class="list-group-item">{% trans 'Scores' %}: {{ request.user.profile.score }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% if offers %}
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+      {% for offer in offers %}
+    <div class="carousel-item {% ifequal offer.pk 1 %}active{% endifequal %}" data-bs-interval="10000">
+        <div class="card">
+            <div class="card-body">
+                <h1>{{ offer.title }}</h1>
+                <p>{{ offer.description }}</p>
+                <p>Предложение действительно в течение: {{ offer.term }} дней.</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endif %}
+{% else %}
+    Здравствуйте, похоже вы еще не вошли на наш сайт в качестве пользователя!
+{% endif %}
+{% endblock %}

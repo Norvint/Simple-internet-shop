@@ -1,0 +1,478 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-07 23:25+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\app_files\apps.py:7
+msgid "files"
+msgstr "файлы"
+
+#: .\app_goods\apps.py:7 .\app_goods\models.py:27
+msgid "goods"
+msgstr "товары"
+
+#: .\app_goods\models.py:9 .\app_goods\models.py:112 .\app_users\forms.py:27
+msgid "title"
+msgstr "название"
+
+#: .\app_goods\models.py:10
+msgid "address"
+msgstr "адрес"
+
+#: .\app_goods\models.py:13 .\app_goods\models.py:34 .\app_goods\models.py:75
+#: .\app_goods\models.py:99
+msgid "shop"
+msgstr "магазин"
+
+#: .\app_goods\models.py:14
+msgid "shops"
+msgstr "магазины"
+
+#: .\app_goods\models.py:21
+msgid "code"
+msgstr "артикул"
+
+#: .\app_goods\models.py:22 .\templates\goods\items_list.html:19
+msgid "price"
+msgstr "цена"
+
+#: .\app_goods\models.py:23 .\app_goods\models.py:113 .\app_users\forms.py:28
+msgid "description"
+msgstr "описание"
+
+#: .\app_goods\models.py:26
+msgid "good"
+msgstr "товар"
+
+#: .\app_goods\models.py:35 .\app_goods\models.py:47 .\app_goods\models.py:76
+#: .\app_goods\models.py:100
+msgid "item"
+msgstr "товар"
+
+#: .\app_goods\models.py:36 .\app_goods\models.py:77 .\app_goods\models.py:101
+msgid "quantity"
+msgstr "количество"
+
+#: .\app_goods\models.py:39
+msgid "item quantity in shop"
+msgstr "количество товара в магазине"
+
+#: .\app_goods\models.py:40
+msgid "items quantity in shops"
+msgstr "количество товаров в магазинах"
+
+#: .\app_goods\models.py:49
+msgid "image"
+msgstr "изображение"
+
+#: .\app_goods\models.py:52
+msgid "image of item"
+msgstr "изображение товара"
+
+#: .\app_goods\models.py:53
+msgid "images of items"
+msgstr "изображения товаров"
+
+#: .\app_goods\models.py:60 .\app_goods\models.py:85 .\app_users\models.py:7
+msgid "user"
+msgstr "пользователь"
+
+#: .\app_goods\models.py:61 .\app_goods\models.py:86
+msgid "total sum"
+msgstr "итоговая сумма"
+
+#: .\app_goods\models.py:62
+msgid "created"
+msgstr "создан"
+
+#: .\app_goods\models.py:63 .\app_goods\models.py:87
+msgid "items quantity"
+msgstr "количество товаров"
+
+#: .\app_goods\models.py:66 .\app_goods\models.py:74
+msgid "order"
+msgstr "заказ"
+
+#: .\app_goods\models.py:67
+msgid "orders"
+msgstr "заказы"
+
+#: .\app_goods\models.py:80
+msgid "item in order"
+msgstr "товар в заказе"
+
+#: .\app_goods\models.py:81
+msgid "items in orders"
+msgstr "товары в заказах"
+
+#: .\app_goods\models.py:90 .\app_goods\models.py:98
+msgid "cart"
+msgstr "корзина"
+
+#: .\app_goods\models.py:91
+msgid "carts"
+msgstr "корзины"
+
+#: .\app_goods\models.py:104
+msgid "item in cart"
+msgstr "товар в корзине"
+
+#: .\app_goods\models.py:105
+msgid "items in cart"
+msgstr "товары в корзинах"
+
+#: .\app_goods\models.py:114
+msgid "creation date"
+msgstr "дата создания"
+
+#: .\app_goods\models.py:115
+msgid "term"
+msgstr "действует в течение, дн."
+
+#: .\app_goods\models.py:116
+msgid "is active"
+msgstr "активен"
+
+#: .\app_goods\models.py:119
+msgid "offer"
+msgstr "предложение"
+
+#: .\app_goods\models.py:120
+msgid "offers"
+msgstr "предложения"
+
+#: .\app_pages\views.py:14
+#, python-format
+msgid "Hello there! Today is %(date)s %(time)s"
+msgstr "Привет! Сегодня %(date)s %(time)s"
+
+#: .\app_users\apps.py:7
+msgid "users"
+msgstr "пользователи"
+
+#: .\app_users\forms.py:16 .\app_users\forms.py:33 .\app_users\models.py:10
+msgid "date of birth"
+msgstr "дата рождения"
+
+#: .\app_users\forms.py:18 .\app_users\forms.py:35 .\app_users\models.py:8
+msgid "city"
+msgstr "город"
+
+#: .\app_users\forms.py:19 .\app_users\forms.py:36 .\app_users\models.py:9
+msgid "phone number"
+msgstr "номер телефона"
+
+#: .\app_users\forms.py:48 .\templates\goods\item_detail.html:25
+#: .\templates\goods\item_detail.html:58 .\templates\goods\order_detail.html:23
+#: .\templates\users\account.html:54
+msgid "Quantity"
+msgstr "количество"
+
+#: .\app_users\models.py:11
+msgid "balance"
+msgstr "баланс"
+
+#: .\app_users\models.py:14
+msgid "profile"
+msgstr "профиль"
+
+#: .\app_users\models.py:15
+msgid "profiles"
+msgstr "профили"
+
+#: .\templates\base.html:27
+msgid "Goods"
+msgstr "Товары"
+
+#: .\templates\base.html:30 .\templates\goods\shops_list.html:3
+#: .\templates\goods\shops_list.html:6
+msgid "Shops list"
+msgstr "Список магазинов"
+
+#: .\templates\base.html:31
+msgid "Goods list"
+msgstr "Список товаров"
+
+#: .\templates\base.html:34
+msgid "Update prices"
+msgstr "Обновить цены"
+
+#: .\templates\base.html:43
+msgid "Different"
+msgstr "Всякое"
+
+#: .\templates\base.html:46
+msgid "Welcome"
+msgstr "Приветствие"
+
+#: .\templates\base.html:47
+msgid "Example"
+msgstr "Пример"
+
+#: .\templates\base.html:50
+msgid "Another welcome"
+msgstr "Другое приветствие"
+
+#: .\templates\base.html:57
+msgid "Admin page"
+msgstr "Админка"
+
+#: .\templates\base.html:77
+msgid "Log out"
+msgstr "Выход"
+
+#: .\templates\base.html:79
+msgid "Account"
+msgstr "Личный кабинет"
+
+#: .\templates\base.html:81
+msgid "Log in"
+msgstr "Вход"
+
+#: .\templates\base.html:83 .\templates\users\register.html:3
+#: .\templates\users\register.html:6
+msgid "Register"
+msgstr "Регистрация"
+
+#: .\templates\goods\item_detail.html:6 .\templates\goods\order_detail.html:21
+#: .\templates\users\account.html:51
+msgid "Item"
+msgstr "Товар"
+
+#: .\templates\goods\item_detail.html:9 .\templates\goods\items_list.html:13
+msgid "Item image"
+msgstr "изображение товара"
+
+#: .\templates\goods\item_detail.html:15 .\templates\goods\order_detail.html:24
+#: .\templates\users\account.html:53
+msgid "Price"
+msgstr "цена"
+
+#: .\templates\goods\item_detail.html:19
+msgid "Availability"
+msgstr "Доступно"
+
+#: .\templates\goods\item_detail.html:24 .\templates\goods\item_detail.html:57
+#: .\templates\goods\order_detail.html:22 .\templates\users\account.html:52
+msgid "Shop"
+msgstr "Магазин"
+
+#: .\templates\goods\item_detail.html:26
+msgid "Buy"
+msgstr "Купить"
+
+#: .\templates\goods\item_detail.html:49 .\templates\goods\shops_list.html:34
+msgid "There is no shops"
+msgstr "В списке "
+
+#: .\templates\goods\item_detail.html:53
+msgid "In cart"
+msgstr "В корзине"
+
+#: .\templates\goods\item_detail.html:59 .\templates\users\account.html:56
+msgid "Dismiss"
+msgstr "Отменить"
+
+#: .\templates\goods\items_list.html:3 .\templates\goods\items_list.html:7
+msgid "Items list"
+msgstr "Список товаров"
+
+#: .\templates\goods\items_list.html:22 .\templates\goods\shops_list.html:27
+msgid "open"
+msgstr "открыть"
+
+#: .\templates\goods\order_detail.html:3 .\templates\goods\order_detail.html:7
+msgid "Order"
+msgstr "заказ"
+
+#: .\templates\goods\order_detail.html:11 .\templates\users\account.html:112
+msgid "Created"
+msgstr "создан"
+
+#: .\templates\goods\order_detail.html:12 .\templates\users\account.html:114
+msgid "Total sum"
+msgstr "Итоговая сумма"
+
+#: .\templates\goods\order_detail.html:15
+msgid "Items in order"
+msgstr "товары в заказах"
+
+#: .\templates\goods\shops_list.html:11
+msgid "Title"
+msgstr "Название"
+
+#: .\templates\goods\shops_list.html:12
+msgid "Address"
+msgstr "Адрес"
+
+#: .\templates\goods\upload_price_file.html:3
+#: .\templates\goods\upload_price_file.html:6
+#, fuzzy
+#| msgid "Update prices"
+msgid "Update items prices"
+msgstr "Обновить цены"
+
+#: .\templates\goods\upload_price_file.html:10
+#, fuzzy
+#| msgid "Update prices"
+msgid "Load prices"
+msgstr "Обновить цены"
+
+#: .\templates\greetings.html:4
+msgid "What time is it?"
+msgstr "Какое сейчас время?"
+
+#: .\templates\media\upload_file.html:3 .\templates\media\upload_file.html:6
+msgid "File uploading"
+msgstr "Загрузка файла"
+
+#: .\templates\media\upload_file.html:10
+#, fuzzy
+#| msgid "profile"
+msgid "Load file"
+msgstr "профиль"
+
+#: .\templates\translation_example.html:5
+msgid "Our translation page title."
+msgstr "Заголовок нашей страницы с переводом"
+
+#: .\templates\translation_example.html:7
+msgid "Translated text."
+msgstr "Переведенный текст"
+
+#: .\templates\translation_example.html:20
+msgid "Welcome to our page"
+msgstr "Добро пожаловать на нашу страницу"
+
+#: .\templates\users\account.html:7
+msgid "User profile"
+msgstr "Профиль пользователя"
+
+#: .\templates\users\account.html:15
+msgid "Edit"
+msgstr "Редактировать"
+
+#: .\templates\users\account.html:19
+msgid "Add balance"
+msgstr "Пополнить баланс"
+
+#: .\templates\users\account.html:23 .\templates\users\restore_password.html:3
+#: .\templates\users\restore_password.html:8
+msgid "Restore password"
+msgstr "Восстановить пароль"
+
+#: .\templates\users\account.html:29
+msgid "Cart"
+msgstr "Корзина"
+
+#: .\templates\users\account.html:34
+msgid "Orders"
+msgstr "Заказы"
+
+#: .\templates\users\account.html:39
+msgid "Information"
+msgstr "Информация"
+
+#: .\templates\users\account.html:55 .\templates\users\add_balance.html:13
+msgid "Add"
+msgstr "Добавить"
+
+#: .\templates\users\account.html:92
+msgid "Overall"
+msgstr "Всего"
+
+#: .\templates\users\account.html:92
+msgid "positions will cost"
+msgstr "позиций будет стоить"
+
+#: .\templates\users\account.html:93
+msgid "imagine coins"
+msgstr "воображемый монет"
+
+#: .\templates\users\account.html:96
+msgid "Checkout"
+msgstr "Оформить"
+
+#: .\templates\users\account.html:100
+msgid "There is no items in cart"
+msgstr "В корзине нет товаров"
+
+#: .\templates\users\account.html:111
+msgid "Number"
+msgstr "Номер"
+
+#: .\templates\users\account.html:113
+msgid "Items"
+msgstr "Товары"
+
+#: .\templates\users\account.html:136
+msgid "Open"
+msgstr "Открыть"
+
+#: .\templates\users\account.html:144
+msgid "There is no orders yet"
+msgstr "Заказов еще нет"
+
+#: .\templates\users\account.html:152
+msgid "Phone number"
+msgstr "Номер телефона"
+
+#: .\templates\users\account.html:153
+msgid "First name"
+msgstr "Имя"
+
+#: .\templates\users\account.html:154
+msgid "Last name"
+msgstr "Фамилия"
+
+#: .\templates\users\account.html:155
+msgid "City"
+msgstr "Город"
+
+#: .\templates\users\account.html:156 .\templates\users\add_balance.html:4
+#: .\templates\users\add_balance.html:8
+msgid "Balance"
+msgstr "Баланс"
+
+#: .\templates\users\edit_account.html:4 .\templates\users\edit_account.html:8
+msgid "Account edit"
+msgstr "Редактировать профиль"
+
+#: .\templates\users\edit_account.html:13
+msgid "Update"
+msgstr "Обновить"
+
+#: .\templates\users\login.html:3 .\templates\users\login.html:6
+msgid "Login page"
+msgstr "Страница авторизации"
+
+#: .\templates\users\login.html:10
+msgid "Login"
+msgstr "Вход"
+
+#: .\templates\users\register.html:10
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#~ msgid "There is no item like this in cart"
+#~ msgstr "В корзине нет таких товаров"
+
+#~ msgid "verified"
+#~ msgstr "верифицированный"
